@@ -10,9 +10,13 @@ function sleep(ms) {
 }
 
 async function main() {
-  // send message to the metrics server
-  metrics.timing('test.core.delay', Math.random() * 1000);
-
+  try {
+    // send message to the metrics server
+    metrics.timing('test.core.delay', Math.random() * 1000);
+    console.log(`Metric sent to statsd`);
+  } catch (error) {
+    console.error('Error sending metric to statsd:', error);
+  }
   // sleep for a random number of milliseconds to avoid flooding metrics server
   return sleep(3000);
 }

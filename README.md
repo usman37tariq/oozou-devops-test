@@ -19,7 +19,7 @@ This section provides a detailed explanation of the Terraform configuration, foc
 
 #### VPC Module
 
-The VPC (Virtual Private Cloud) is created using the Terraform AWS VPC module. This module provisions a secure and isolated network environment for your ECS cluster. The VPC is configured with the following features:
+The VPC (Virtual Private Cloud) is created using the Terraform AWS VPC module. This module provisions a secure and isolated network environment for our ECS cluster. The VPC is configured with the following features:
 
 - **Private and Public Subnets**: Separate subnets are created for public and private resources, allowing for secure communication between the components. The private subnets host the ECS tasks, while the public subnets are used by the Application Load Balancer (ALB).
   
@@ -31,13 +31,13 @@ The design ensures that the application components are isolated and secure, with
 
 #### ECR Repository
 
-An Amazon Elastic Container Registry (ECR) repository is provisioned to store Docker images for your application. The ECR repository is configured with:
+An Amazon Elastic Container Registry (ECR) repository is provisioned to store Docker images for our application. The ECR repository is configured with:
 
-- **Image Scanning**: Automatic scanning on image push is enabled to detect vulnerabilities, ensuring that only secure images are deployed to your ECS cluster.
+- **Image Scanning**: Automatic scanning on image push is enabled to detect vulnerabilities, ensuring that only secure images are deployed to our ECS cluster.
   
 - **Versioning**: The Docker image is tagged with an incremented version number, derived from a local version file. This ensures that each deployment uses a uniquely identifiable image, facilitating rollback and debugging.
 
-This setup provides a secure, version-controlled repository for your application's container images.
+This setup provides a secure, version-controlled repository for our application's container images.
 
 #### IAM Roles
 
@@ -71,7 +71,7 @@ The ECS service is responsible for maintaining the desired number of task instan
 
 - **Auto-Scaling**: The service is set up to scale based on the desired count, ensuring high availability and reliability of the application.
 
-This service configuration ensures that your application is scalable, highly available, and easy to manage.
+This service configuration ensures that our application is scalable, highly available, and easy to manage.
 
 #### Security Groups
 
@@ -90,8 +90,6 @@ An Application Load Balancer is provisioned to manage incoming traffic:
 - **Public Access**: The ALB is configured to be accessible from the internet, forwarding HTTP requests to the Graphite container. This setup allows you to access the Graphite metrics dashboard publicly.
   
 - **Target Group**: The ALB forwards traffic to the ECS service using a target group. The target group is configured to route traffic to the appropriate container port in the ECS tasks.
-
-The ALB ensures that your application can handle varying levels of traffic with high availability and fault tolerance.
 
 ## Workspaces and tfvars
 
