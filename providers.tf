@@ -7,6 +7,7 @@ terraform {
   }
 }
 
+# Provider Configuration for AWS and Docker
 provider "aws" {
   region  = var.region
   profile = var.profile
@@ -20,4 +21,5 @@ provider "docker" {
   }
 }
 
+# Data source to get the ECR authorization token
 data "aws_ecr_authorization_token" "ecr_token" {}
